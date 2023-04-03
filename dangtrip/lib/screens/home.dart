@@ -15,8 +15,10 @@ class HomeScreen extends StatelessWidget {
           Container(
             height: 320,
             decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('lib/assets/banner/AD_1.png'))),
+              image: DecorationImage(
+                image: AssetImage('lib/assets/banner/AD_1.png'),
+              ),
+            ),
           )
         ],
       ),

@@ -19,8 +19,11 @@ class App extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: onBoard(),
+    return MaterialApp(
+      theme: ThemeData(fontFamily: 'Pretendard'),
+      themeMode: ThemeMode.system,
+      debugShowCheckedModeBanner: false,
+      home: const onBoard(),
     );
   }
 }
