@@ -20,10 +20,12 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'Pretendard'),
+      theme: ThemeData(
+        fontFamily: 'Pretendard',
+      ),
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      home: const onBoard(),
+      home: const OnBoard(),
     );
   }
 }
