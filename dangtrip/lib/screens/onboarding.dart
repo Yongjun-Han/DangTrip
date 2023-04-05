@@ -30,6 +30,102 @@ class OnBoard extends StatelessWidget {
                         builder: (context) => const HomeScreen(),
                       ),
                     );
+
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Container(
+                          height: 360,
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                          ),
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 32,
+                                decoration: const BoxDecoration(
+                                  color: Colors.black,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: const [
+                                    Icon(
+                                      Icons.check_box_outline_blank_outlined,
+                                      color: Colors.white54,
+                                    ),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
+                                    Text(
+                                      '오늘하루 그만보기',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white54,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                  ),
+                                  child: Image.asset(
+                                    'lib/assets/event/kanu_dog.jpg',
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                        // return Column(
+                        //   children: [
+                        //     Container(
+                        //       height: 56,
+                        //       decoration: const BoxDecoration(
+                        //         color: Colors.transparent,
+                        //       ),
+                        //       child: Padding(
+                        //         padding:
+                        //             const EdgeInsets.symmetric(horizontal: 20),
+                        //         child: Row(
+                        //           mainAxisAlignment: MainAxisAlignment.end,
+                        //           children: const [
+                        //             Icon(
+                        //               Icons.check_box_outline_blank_outlined,
+                        //               color: Colors.white,
+                        //             ),
+                        //             SizedBox(
+                        //               width: 8,
+                        //             ),
+                        //             Text(
+                        //               "오늘하루 그만보기",
+                        //               style: TextStyle(
+                        //                 fontWeight: FontWeight.bold,
+                        //                 color: Color(0xffffffff),
+                        //               ),
+                        //             ),
+                        //           ],
+                        //         ),
+                        //       ),
+                        //     ),
+                        //     Container(
+                        //       height: 360,
+                        //       decoration: BoxDecoration(
+                        //         color: Colors.blue,
+                        //         borderRadius: BorderRadius.circular(15),
+                        //       ),
+                        //       child: Column(),
+                        //     ),
+                        //   ],
+                        // );
+                      },
+                    );
                   },
                   child: const Text(
                     '먼저 둘러볼게요',
