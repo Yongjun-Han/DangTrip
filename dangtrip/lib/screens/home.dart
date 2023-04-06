@@ -1,4 +1,13 @@
+import 'package:dangtrip/widgets/banner_slide.dart';
 import 'package:flutter/material.dart';
+
+final List<String> imgList = [
+  'lib/assets/banner/AD_1.png',
+  'lib/assets/banner/AD_2.png',
+  'lib/assets/banner/AD_3.png',
+  'lib/assets/banner/AD_4.png',
+  'lib/assets/banner/AD_5.png',
+];
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,16 +20,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
-        children: [
-          Container(
-            height: 320,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('lib/assets/banner/AD_1.png'),
-              ),
-            ),
-          )
-        ],
+        children: const [HomeBanner()],
       ),
     );
   }
