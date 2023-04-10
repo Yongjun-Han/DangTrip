@@ -46,7 +46,7 @@ class _HomeBannerState extends State<HomeBanner> {
               scrollPhysics: const BouncingScrollPhysics(),
               autoPlay: true,
               onPageChanged: (index, reason) {
-                print(currentIndex);
+                // print(currentIndex);
                 setState(() {
                   currentIndex = index;
                 });

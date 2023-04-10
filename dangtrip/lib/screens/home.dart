@@ -18,9 +18,57 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // print(webtoons);
     return Scaffold(
+      extendBody: true,
       backgroundColor: Colors.white,
-      body: Column(
-        children: const [HomeBanner()],
+      body: SingleChildScrollView(
+        child: Column(
+          children: const [
+            HomeBanner(),
+          ],
+        ),
+      ),
+      floatingActionButton: SizedBox(
+        width: 72,
+        height: 72,
+        child: FittedBox(
+          child: FloatingActionButton(
+            onPressed: () {
+              print('FAB');
+            },
+            backgroundColor: const Color(0xffA9A8D3),
+            child: const RotatedBox(
+              quarterTurns: 1,
+              child: Icon(Icons.route_outlined),
+            ),
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        notchMargin: 10,
+        shape: const CircularNotchedRectangle(),
+        color: const Color(0xff807ec2),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.home),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.map_outlined),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.photo_camera_back),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.favorite_border_outlined),
+            ),
+          ],
+        ),
       ),
     );
   }
