@@ -2,19 +2,11 @@ import 'package:dangtrip/screens/onboarding.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const App());
-  // ApiService().getTodaysToons();
+  runApp(const _App());
 }
 
-// Future<void> main() async {
-//   bool data = await fetchData();
-//   print(data);
-
-//   runApp(MyApp());
-// }
-
-class App extends StatelessWidget {
-  const App({super.key});
+class _App extends StatelessWidget {
+  const _App();
 
   // This widget is the root of your application.
   @override
