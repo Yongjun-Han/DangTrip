@@ -13,7 +13,7 @@ class CustomTextInput extends StatelessWidget {
     this.errorText,
     this.obscureText = false,
     this.autofocus = false,
-    required this.onChanged,
+    this.onChanged,
     super.key,
   });
 
@@ -36,7 +36,7 @@ class CustomTextInput extends StatelessWidget {
         hintText: hintText,
         errorText: errorText,
         hintStyle: const TextStyle(
-          color: SECONDARY_COLOR,
+          color: TEXT_DIMMED,
           fontSize: 14,
         ),
         fillColor: TEXT_INPUT_COLOR,
