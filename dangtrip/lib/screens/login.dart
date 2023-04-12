@@ -123,7 +123,7 @@ class _LoginState extends State<Login> {
                       onTap: () async {
                         // 아이디:비밀번호
                         final rawString = '$username:$password';
-                        print(rawString);
+                        // print(rawString);
                         //일반 String 을 Base 64 로 변환하는법
                         Codec<String, String> stringToBase64 =
                             utf8.fuse(base64);
@@ -135,6 +135,7 @@ class _LoginState extends State<Login> {
                             'authorization': 'Basic $token',
                           }),
                         );
+                        // print(res);
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (_) => const HomeScreen()));
 
