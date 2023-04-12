@@ -1,8 +1,11 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:dangtrip/Common/Component/custom_button.dart';
 import 'package:dangtrip/Common/Component/text_input.dart';
 import 'package:dangtrip/Common/const/colors.dart';
 import 'package:dangtrip/layout/default_layout.dart';
-import 'package:dangtrip/screens/home.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
@@ -10,6 +13,14 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dio = Dio();
+
+    //플랫폼별  localhost
+    const emulatorIp = '10.0.2.2:3000';
+    const simulatorIp = '127.0.0.1:3000';
+
+    final ip = Platform.isIOS ? simulatorIp : emulatorIp;
+
     return DefaultLayout(
       child: SingleChildScrollView(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -32,9 +43,24 @@ class Login extends StatelessWidget {
                       size: 30,
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(right: 20),
-                    child: Text('회원가입'),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: TextButton(
+                        onPressed: () async {
+                          const refreshToken =
+                              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RAY29kZWZhY3RvcnkuYWkiLCJzdWIiOiJmNTViMzJkMi00ZDY4LTRjMWUtYTNjYS1kYTlkN2QwZDkyZTUiLCJ0eXBlIjoicmVmcmVzaCIsImlhdCI6MTY4MTI4NjM1MywiZXhwIjoxNjgxMzcyNzUzfQ.DkBQsfZdJs2LLpKa0pJrUdmdAzcI0VNCDFcCCLEXDfQ";
+                          final res = await dio.post(
+                            'http://$ip/auth/token',
+                            options: Options(headers: {
+                              'authorization': 'Bearer $refreshToken',
+                            }),
+                          );
+                          print(res.data);
+                        },
+                        child: const Text(
+                          '회원가입',
+                          style: TextStyle(color: PRIMARY_COLOR),
+                        )),
                   ),
                 ],
               ),
@@ -76,69 +102,83 @@ class Login extends StatelessWidget {
                       height: 20,
                     ),
                     GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            // fullscreenDialog: true,
-                            builder: (context) => const HomeScreen(),
-                          ),
+                      onTap: () async {
+                        // 아이디:비밀번호
+                        const rawString = 'test@codefactory.ai:testtest';
+                        //일반 String 을 Base 64 로 변환하는법
+                        Codec<String, String> stringToBase64 =
+                            utf8.fuse(base64);
+
+                        String token = stringToBase64.encode(rawString);
+                        final res = await dio.post(
+                          'http://$ip/auth/login',
+                          options: Options(headers: {
+                            'authorization': 'Basic $token',
+                          }),
                         );
-                        showModalBottomSheet(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return Container(
-                              height: 360,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                              ),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    height: 32,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.black,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: const [
-                                        Icon(
-                                          Icons
-                                              .check_box_outline_blank_outlined,
-                                          color: Colors.white54,
-                                        ),
-                                        SizedBox(
-                                          width: 8,
-                                        ),
-                                        Text(
-                                          '오늘하루 그만보기',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white54,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 20,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                      ),
-                                      child: Image.asset(
-                                        'lib/assets/event/kanu_dog.jpg',
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        );
+                        print(res.data);
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     // fullscreenDialog: true,
+                        //     builder: (context) => const HomeScreen(),
+                        //   ),
+                        // );
+                        // showModalBottomSheet(
+                        //   context: context,
+                        //   builder: (BuildContext context) {
+                        //     return Container(
+                        //       height: 360,
+                        //       decoration: const BoxDecoration(
+                        //         color: Colors.white,
+                        //       ),
+                        //       child: Column(
+                        //         children: [
+                        //           Container(
+                        //             height: 32,
+                        //             decoration: const BoxDecoration(
+                        //               color: Colors.black,
+                        //             ),
+                        //             child: Row(
+                        //               mainAxisAlignment: MainAxisAlignment.end,
+                        //               children: const [
+                        //                 Icon(
+                        //                   Icons
+                        //                       .check_box_outline_blank_outlined,
+                        //                   color: Colors.white54,
+                        //                 ),
+                        //                 SizedBox(
+                        //                   width: 8,
+                        //                 ),
+                        //                 Text(
+                        //                   '오늘하루 그만보기',
+                        //                   style: TextStyle(
+                        //                     fontWeight: FontWeight.bold,
+                        //                     color: Colors.white54,
+                        //                   ),
+                        //                 ),
+                        //                 SizedBox(
+                        //                   width: 20,
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //           ),
+                        //           Expanded(
+                        //             child: Container(
+                        //               decoration: const BoxDecoration(
+                        //                 color: Colors.white,
+                        //               ),
+                        //               child: Image.asset(
+                        //                 'lib/assets/event/kanu_dog.jpg',
+                        //                 fit: BoxFit.fill,
+                        //               ),
+                        //             ),
+                        //           ),
+                        //         ],
+                        //       ),
+                        //     );
+                        //   },
+                        // );
                       },
                       child: const CustomButton(
                         buttonTitle: '로그인',
