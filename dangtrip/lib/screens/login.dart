@@ -5,6 +5,7 @@ import 'package:dangtrip/Common/Component/custom_button.dart';
 import 'package:dangtrip/Common/Component/text_input.dart';
 import 'package:dangtrip/Common/const/colors.dart';
 import 'package:dangtrip/layout/default_layout.dart';
+import 'package:dangtrip/screens/home.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -134,14 +135,9 @@ class _LoginState extends State<Login> {
                             'authorization': 'Basic $token',
                           }),
                         );
-                        print(res.data);
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     // fullscreenDialog: true,
-                        //     builder: (context) => const HomeScreen(),
-                        //   ),
-                        // );
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => const HomeScreen()));
+
                         // showModalBottomSheet(
                         //   context: context,
                         //   builder: (BuildContext context) {
