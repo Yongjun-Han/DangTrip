@@ -13,7 +13,7 @@ class CustomTextInput extends StatelessWidget {
     this.errorText,
     this.obscureText = false,
     this.autofocus = false,
-    this.onChanged,
+    required this.onChanged,
     super.key,
   });
 

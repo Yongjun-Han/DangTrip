@@ -8,8 +8,18 @@ import 'package:dangtrip/layout/default_layout.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  //아이디
+  String username = '';
+  //비밀번호
+  String password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -80,9 +90,13 @@ class Login extends StatelessWidget {
                     const SizedBox(
                       height: 12,
                     ),
-                    const CustomTextInput(
+                    CustomTextInput(
                       hintText: '이메일을 입력해주세요',
-                      autofocus: true,
+                      // autofocus: true,
+                      onChanged: (String value) {
+                        // print(value);
+                        username = value;
+                      },
                       // errorText: '올바르지 않은 이메일 형식입니다',
                     ),
                     const SizedBox(
@@ -92,7 +106,10 @@ class Login extends StatelessWidget {
                     const SizedBox(
                       height: 12,
                     ),
-                    const CustomTextInput(
+                    CustomTextInput(
+                      onChanged: (value) {
+                        password = value;
+                      },
                       hintText: '비밀번호를 입력해주세요',
                       obscureText: true,
                       errorText: "영문, 특수문자, 숫자 중 반드시 2개 이상 포함되어야 합니다",
@@ -104,7 +121,8 @@ class Login extends StatelessWidget {
                     GestureDetector(
                       onTap: () async {
                         // 아이디:비밀번호
-                        const rawString = 'test@codefactory.ai:testtest';
+                        final rawString = '$username:$password';
+                        print(rawString);
                         //일반 String 을 Base 64 로 변환하는법
                         Codec<String, String> stringToBase64 =
                             utf8.fuse(base64);
