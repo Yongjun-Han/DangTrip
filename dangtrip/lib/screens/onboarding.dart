@@ -83,47 +83,6 @@ class OnBoard extends StatelessWidget {
                             ],
                           ),
                         );
-                        // return Column(
-                        //   children: [
-                        //     Container(
-                        //       height: 56,
-                        //       decoration: const BoxDecoration(
-                        //         color: Colors.transparent,
-                        //       ),
-                        //       child: Padding(
-                        //         padding:
-                        //             const EdgeInsets.symmetric(horizontal: 20),
-                        //         child: Row(
-                        //           mainAxisAlignment: MainAxisAlignment.end,
-                        //           children: const [
-                        //             Icon(
-                        //               Icons.check_box_outline_blank_outlined,
-                        //               color: Colors.white,
-                        //             ),
-                        //             SizedBox(
-                        //               width: 8,
-                        //             ),
-                        //             Text(
-                        //               "오늘하루 그만보기",
-                        //               style: TextStyle(
-                        //                 fontWeight: FontWeight.bold,
-                        //                 color: Color(0xffffffff),
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ),
-                        //     ),
-                        //     Container(
-                        //       height: 360,
-                        //       decoration: BoxDecoration(
-                        //         color: Colors.blue,
-                        //         borderRadius: BorderRadius.circular(15),
-                        //       ),
-                        //       child: Column(),
-                        //     ),
-                        //   ],
-                        // );
                       },
                     );
                   },
